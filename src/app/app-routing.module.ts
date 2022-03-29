@@ -1,10 +1,22 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-
-const routes: Routes = [];
-
+import { LoginComponent } from './components/auth/login/login.component';
+import { CoreComponent } from './components/core/core.component';
+import { HomeComponent } from './components/home/home.component';
+import { ReservasComponent } from './components/reservas/reservas.component';
+const routes: Routes = [
+  { path: '', component: LoginComponent },
+  {
+    path: 'newdelta',
+    component: CoreComponent,
+    children: [
+      { path: 'home', component: HomeComponent  },
+      { path: 'reservas', component: ReservasComponent  },
+    ],
+  }
+];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

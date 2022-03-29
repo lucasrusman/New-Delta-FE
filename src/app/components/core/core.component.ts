@@ -12,19 +12,11 @@ export class CoreComponent implements OnInit {
   ngOnInit(): void {}
 
   goToHomePage(){
-    this.router.navigateByUrl('/dhr/home');
+    this.router.navigateByUrl('/newdelta/home');
   }
 
-  goToClientsPage() {
-    this.router.navigateByUrl('/dhr/clients');
-  }
-
-  goToProductsPage() {
-    this.router.navigateByUrl('/dhr/products');
-  }
-
-  goToSalesPage() {
-    this.router.navigateByUrl('/dhr/sales');
+  goToBookingPage() {
+    this.router.navigateByUrl('/newdelta/reservas');
   }
 
   logout() {
