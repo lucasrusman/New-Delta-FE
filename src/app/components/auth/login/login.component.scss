@@ -1,7 +1,67 @@
-mat-form-field{
+.body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+.login {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  gap: 1.5em;
   width: 100%;
+  max-width: 330px;
+  padding: 0 0 15px 0;
+  margin: 0;
+  text-align: center;
+  background-color: #fff;
+  border-radius: 4%;
 }
 
-mat-spinner{
+.container{
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  width: 100%;
+  max-width: 330px;
+  padding: 0 0 15px 0;
+  margin: 0;
+  text-align: center;
+  border-radius: 4%;
+}
+.logo{
+  padding: 10px 0 0 10px;
+  text-align: left;
+}
+
+.login button{
+  display: block;
+  text-align: center;
+
+
+}
+
+.example-full-width {
+  width: 80%;
+}
+
+
+.signup{
+  margin-top: 3%;
+}
+
+.signup a{
+  color: #002b5c;
+}
+
+.login button{
+  display: block;
   margin: auto;
+}
+
+form{
+  padding: 20px 0 20px 0;
+  background-color: #002b5c;
+  border-radius: 20px;
+
 }
