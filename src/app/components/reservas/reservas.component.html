@@ -1,1 +1,111 @@
-<p>reservas works!</p>
+<mat-tab-group class="tab-group" >
+  <mat-tab label="Mostrar Reservas">
+    <div class="tabla-completa">
+      <mat-form-field appearance="standard" class="filter-class">
+        <mat-label class="label-search">Busqueda</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input class="input-search">
+      </mat-form-field>
+      <div class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource" matSort>
+
+          <!-- Num Column -->
+          <ng-container matColumnDef="Numero">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Numero </th>
+            <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+          </ng-container>
+
+          <!-- Date Column -->
+          <ng-container matColumnDef="Fecha">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Fecha </th>
+            <td mat-cell *matCellDef="let row"> {{row.progress}}% </td>
+          </ng-container>
+
+          <!-- From Column -->
+          <ng-container matColumnDef="Desde">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Desde </th>
+            <td mat-cell *matCellDef="let row"> {{row.name}} </td>
+          </ng-container>
+
+          <!-- To Column -->
+          <ng-container matColumnDef="Hasta">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Hasta </th>
+            <td mat-cell *matCellDef="let row"> {{row.fruit}} </td>
+          </ng-container>
+
+          <!-- Km Column -->
+          <ng-container matColumnDef="Km">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Km </th>
+            <td mat-cell *matCellDef="let row"> {{row.fruit}} </td>
+          </ng-container>
+
+          <!-- Price Column -->
+          <ng-container matColumnDef="Precio Aprox">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Precio Aprox </th>
+            <td mat-cell *matCellDef="let row"> {{row.fruit}} </td>
+          </ng-container>
+
+          <!-- State Column -->
+          <ng-container matColumnDef="Estado">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Estado </th>
+            <td mat-cell *matCellDef="let row"> {{row.fruit}} </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+          <!-- Row shown when there is no matching data. -->
+          <tr class="mat-row" *matNoDataRow>
+            <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+          </tr>
+        </table>
+
+        <mat-paginator [pageSizeOptions]="[10, 25, 50, 100]" aria-label="Select page of users"></mat-paginator>
+      </div>
+
+    </div>
+
+  </mat-tab>
+
+  <mat-tab label="Crear Reserva">
+    <div class="container">
+      <mat-form-field appearance="fill">
+        <mat-label class="title">Numero</mat-label>
+        <input matInput name="name" [(ngModel)]="number" minlength="5" />
+      </mat-form-field>
+
+
+      <mat-form-field appearance="fill">
+        <mat-label class="title">Fecha</mat-label>
+        <input matInput name="detail" [(ngModel)]="date" minlength="5" />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label class="title">Desde</mat-label>
+        <input matInput name="name" [(ngModel)]="from" minlength="5" />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Hasta</mat-label>
+        <input matInput name="zone" [(ngModel)]="to" minlength="5" />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label class="title">Km</mat-label>
+        <input matInput name="adress" [(ngModel)]="distance" minlength="5" />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label class="title">Precio Aprox</mat-label>
+        <input matInput name="detail" [(ngModel)]="price" minlength="5" />
+      </mat-form-field>
+
+      <button mat-raised-button color="warn" >Send</button>
+    </div>
+  </mat-tab>
+
+
+
+
+
+
+</mat-tab-group>
