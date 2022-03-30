@@ -1,15 +1,11 @@
 <mat-toolbar class="mat-elevation-z8">
-  <button mat-icon-button *ngIf="sidenav.mode === 'over'" (click)="sidenav.toggle()">
+  <button mat-icon-button (click)="sidenav.toggle()" (click)="onToggleSidenav()">
       <mat-icon *ngIf="!sidenav.opened">
           menu
-      </mat-icon>
-      <mat-icon *ngIf="sidenav.opened">
-          close
       </mat-icon>
   </button>
   New Delta
 </mat-toolbar>
-
 <mat-sidenav-container>
   <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
     <mat-divider></mat-divider>
