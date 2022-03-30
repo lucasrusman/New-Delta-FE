@@ -34,7 +34,7 @@ export class LoginComponent{
   }
 
   ingresar() {
-    this.router.navigateByUrl('newdelta/home')
+    this.router.navigateByUrl('newdelta/reservas')
   }
 
   onLogin(form: NgForm) {

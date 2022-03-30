@@ -2,7 +2,6 @@ import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './components/auth/login/login.component';
 import { CoreComponent } from './components/core/core.component';
-import { HomeComponent } from './components/home/home.component';
 import { ReservasComponent } from './components/reservas/reservas.component';
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -10,7 +9,6 @@ const routes: Routes = [
     path: 'newdelta',
     component: CoreComponent,
     children: [
-      { path: 'home', component: HomeComponent  },
       { path: 'reservas', component: ReservasComponent  },
     ],
   }

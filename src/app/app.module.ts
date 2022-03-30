@@ -12,14 +12,12 @@ import { AppComponent } from './app.component';
 import { CoreComponent } from './components/core/core.component';
 import { LoginComponent } from './components/auth/login/login.component';
 import { ReservasComponent } from './components/reservas/reservas.component';
-import { HomeComponent } from './components/home/home.component';
 import { AuthService } from './components/auth/auth.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    HomeComponent,
     CoreComponent,
     ReservasComponent,
   ],
