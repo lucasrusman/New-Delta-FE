@@ -33,7 +33,7 @@ export class LoginComponent{
     this.showPassword = !this.showPassword;
   }
 
-  ingresar() {
+  goToReservasPage() {
     this.router.navigateByUrl('newdelta/reservas')
   }
 
@@ -43,7 +43,7 @@ export class LoginComponent{
     }
     this.isLoading = true;
     this.authService.login(form.value.email, form.value.password);
-    this.ingresar()
+    //this.goToReservasPage()
     ;
   }
 }

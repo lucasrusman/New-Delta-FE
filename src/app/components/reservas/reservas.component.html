@@ -7,48 +7,76 @@
   <div class="mat-elevation-z8">
     <table mat-table [dataSource]="dataSource" matSort>
 
-      <!-- ID Column -->
-      <ng-container matColumnDef="id">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Numero </th>
+      <!-- Email Column -->
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
         <td mat-cell *matCellDef="let row"> {{row.id}} </td>
       </ng-container>
 
-      <!-- Progress Column -->
+      <!-- Date Column -->
       <ng-container matColumnDef="fecha">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Fecha </th>
         <td mat-cell *matCellDef="let row"> {{row.progress}}% </td>
       </ng-container>
 
-      <!-- Name Column -->
+      <!-- From Column -->
       <ng-container matColumnDef="desde">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Desde </th>
         <td mat-cell *matCellDef="let row"> {{row.name}} </td>
       </ng-container>
 
-      <!-- Fruit Column -->
+      <!-- To Column -->
       <ng-container matColumnDef="hasta">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Hasta </th>
         <td mat-cell *matCellDef="let row"> {{row.fruit}} </td>
       </ng-container>
 
-      <!-- Fruit Column -->
+      <!-- Distance Column -->
       <ng-container matColumnDef="distancia">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Distancia </th>
         <td mat-cell *matCellDef="let row"> {{row.fruit}} </td>
       </ng-container>
 
-
-      <!-- Fruit Column -->
+      <!-- Price Column -->
       <ng-container matColumnDef="precio">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Precio </th>
         <td mat-cell *matCellDef="let row"> {{row.fruit}} </td>
       </ng-container>
 
-      <!-- Fruit Column -->
+      <ng-container matColumnDef="confirmar">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Confirmar</th>
+        <td mat-cell *matCellDef="let row">
+          <button mat-icon-button>
+            <mat-icon>done</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="cancelar">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Cancelar</th>
+        <td mat-cell *matCellDef="let row">
+          <button mat-icon-button>
+            <mat-icon> close </mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="completar">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Completar</th>
+        <td mat-cell *matCellDef="let row">
+          <button mat-icon-button>
+            <mat-icon> directions_car</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <!-- State Column -->
       <ng-container matColumnDef="estado">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Estado </th>
         <td mat-cell *matCellDef="let row"> <button mat-raised-button color="primary">Atendida</button> </td>
       </ng-container>
+
+
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
