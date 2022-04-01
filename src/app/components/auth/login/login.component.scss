@@ -26,36 +26,16 @@
   margin: auto;
 }
 
+.login mat-form-field{
+  margin-bottom: 15px;
+}
+
 .login button{
   display: block;
   text-align: center;
-  color:#fff
+  margin: auto;
 }
 
 .example-full-width {
   width: 80%;
-}
-.title{
-  font-family: Be Vietnam;
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 22px;
-  letter-spacing: 0em;
-  text-align: center;
-
-}
-
-
-.signup{
-  margin-top: 3%;
-}
-
-.signup a{
-  color: #002b5c;
-}
-
-.login button{
-  display: block;
-  margin: auto;
 }
