@@ -52,7 +52,7 @@ const NAMES: string[] = [
   templateUrl: 'reservas.component.html',
 })
 export class ReservasComponent implements AfterViewInit {
-  displayedColumns: string[] = ['email', 'fecha', 'desde', 'hasta', 'distancia', 'precio', 'confirmar', 'cancelar', 'completar', 'estado'];
+  displayedColumns: string[] = ['email', 'fecha', 'desde', 'hasta', 'distancia', 'precio', 'confirmar', 'cancelar', 'completar'];
   dataSource: MatTableDataSource<UserData>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
