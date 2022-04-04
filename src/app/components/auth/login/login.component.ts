@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
+import { ErrorStateMatcher } from '@angular/material/core';
 import { Router } from '@angular/router';
-import {FormControl, FormGroup, FormGroupDirective, NgForm, Validators} from '@angular/forms';
-import {ErrorStateMatcher} from '@angular/material/core';
 import { AuthService } from 'src/app/services/auth.service';
 
 
@@ -12,11 +12,12 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   }
 }
 
-@Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'],
-})
+
+  @Component({
+    selector: 'app-login',
+    templateUrl: './login.component.html',
+    styleUrls: ['./login.component.scss'],
+  })
 export class LoginComponent implements OnInit {
 
   emailFormControl = new FormControl('', [Validators.required, Validators.email]);
@@ -34,15 +35,16 @@ export class LoginComponent implements OnInit {
     this.showPassword = !this.showPassword;
   }
 
+  goToReservasPage() {
+    this.router.navigateByUrl('/newdelta/reservas');
+  }
+
 
   onLogin(form: NgForm) {
     if (form.invalid) {
       return;
     }
-    this.isLoading = true;
     this.authService.postLogin(form.value.email, form.value.password);
   }
 
 }
-
-

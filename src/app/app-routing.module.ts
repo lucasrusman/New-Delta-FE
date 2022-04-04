@@ -4,9 +4,8 @@ import { AuthGuard } from './components/auth/login/auth.guard';
 import { CoreComponent } from './components/core/core.component';
 import { ReservasComponent } from './components/reservas/reservas.component';
 import { LoginComponent } from './components/auth/login/login.component';
-import { AuthComponent } from './components/auth/auth.component';
 const routes: Routes = [
-  { path: '', component: AuthComponent },
+  { path: '', component: LoginComponent },
   {
     path: 'newdelta',
     component: CoreComponent, canActivate: [AuthGuard],

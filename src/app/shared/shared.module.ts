@@ -1,9 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, NgForm, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
-
 
 
 import { MatCardModule } from '@angular/material/card';
@@ -17,7 +16,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatTableModule } from '@angular/material/table';
-import { MatSelectModule } from '@angular/material/select';
+import { MatSelect, MatSelectModule } from '@angular/material/select';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
@@ -34,8 +33,7 @@ import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { ClipboardModule } from '@angular/cdk/clipboard';
 import { MatSortModule } from '@angular/material/sort';
-import { FlexLayoutModule } from '@angular/flex-layout';
-import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
 export const MaterialModules = [
   MatCardModule,
@@ -95,28 +93,13 @@ export const MaterialModules = [
   MatRadioModule,
   MatDatepickerModule,
   MatTooltipModule,
-  MatButtonToggleModule
+  MatButtonToggleModule,
 ];
 
 @NgModule({
   declarations: [],
-  exports: [
-    CommonModule,
-    RouterModule,
-    ReactiveFormsModule,
-    MaterialModules,
-    FormsModule,
-    FlexLayoutModule,
-    MatTableModule,
-  ],
-  imports: [
-    CommonModule,
-    RouterModule,
-    ReactiveFormsModule,
-    MaterialModules,
-    FormsModule,
-    FlexLayoutModule,
-    MatTableModule,
-  ],
+  imports: [CommonModule, RouterModule, ReactiveFormsModule, MaterialModules, FormsModule],
+  exports: [CommonModule, RouterModule, ReactiveFormsModule, MaterialModules, FormsModule],
 })
+
 export class SharedModule {}
