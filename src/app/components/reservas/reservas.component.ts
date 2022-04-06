@@ -1,47 +1,34 @@
-import {AfterViewInit, Component, ViewChild} from '@angular/core';
+import { AfterViewInit, Component, ViewChild } from '@angular/core';
+
+import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
+import { ErrorStateMatcher } from '@angular/material/core';
+import { MatDialog } from '@angular/material/dialog';
+
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
+import { ActivatedRoute, Router } from '@angular/router';
+import { BookingService } from 'src/app/services/booking.service';
 
-export interface UserData {
-  id: string;
-  name: string;
-  progress: string;
-  fruit: string;
+export interface ReservaData {
+  id : number;
+  email :string;
+  fecha :string;
+  desde :string;
+  hasta :string;
+  distancia :string;
+  precio: string;
+  estado: string;
+  auto: string;
+
 }
 
-/** Constants used to fill up our data base. */
-const FRUITS: string[] = [
-  'blueberry',
-  'lychee',
-  'kiwi',
-  'mango',
-  'peach',
-  'lime',
-  'pomegranate',
-  'pineapple',
-];
-const NAMES: string[] = [
-  'Maia',
-  'Asher',
-  'Olivia',
-  'Atticus',
-  'Amelia',
-  'Jack',
-  'Charlotte',
-  'Theodore',
-  'Isla',
-  'Oliver',
-  'Isabella',
-  'Jasper',
-  'Cora',
-  'Levi',
-  'Violet',
-  'Arthur',
-  'Mia',
-  'Thomas',
-  'Elizabeth',
-];
+export class MyErrorStateMatcher implements ErrorStateMatcher {
+  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+    const isSubmitted = form && form.submitted;
+    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
+  }
+}
 
 /**
  * @title Data table with sorting, pagination, and filtering.
@@ -52,20 +39,41 @@ const NAMES: string[] = [
   templateUrl: 'reservas.component.html',
 })
 export class ReservasComponent implements AfterViewInit {
-  displayedColumns: string[] = ['email', 'fecha', 'desde', 'hasta', 'distancia', 'precio', 'confirmar', 'cancelar', 'completar'];
-  dataSource: MatTableDataSource<UserData>;
+  emailFormControl = new FormControl('', [Validators.required, Validators.email]);
+  displayedColumns: string[] = ['id', 'email', 'fecha', 'desde', 'hasta', 'distancia', 'precio', 'estado','confirmar', 'cancelar', 'completar', 'auto'];
+  dataSource: MatTableDataSource<ReservaData>;
 
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  matcher = new MyErrorStateMatcher();
+  @ViewChild(MatPaginator)
+  paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor() {
-    // Create 100 users
-    const users = Array.from({length: 100}, (_, k) => createNewUser(k + 1));
+  email: string = '';
+  date: string = '';
+  from: string = '';
+  to: string = '';
+  distance: string = '';
+  price: string = '';
+  estado: string = '';
+  auto: string = '';
 
-    // Assign the data to the data source for the table to render
-    this.dataSource = new MatTableDataSource(users);
+  delete !: boolean
+  creado !: boolean
+
+  constructor(private readonly reservaService: BookingService, private dialog: MatDialog, private readonly router: Router, private route: ActivatedRoute) {
+    this.dataSource = new MatTableDataSource();
+    this.getBookings();
+    this.creado = false
   }
-
+  getBookings() {
+    this.reservaService.getBookings().subscribe((response) => {
+      console.log(response);
+      const reserva = response as ReservaData[]
+      console.log(reserva)
+      //const users = Array.from({length: 100}, (_, k) => this.createNewUser(k + 1));
+      this.dataSource.data = reserva
+    });
+  }
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
@@ -79,20 +87,10 @@ export class ReservasComponent implements AfterViewInit {
       this.dataSource.paginator.firstPage();
     }
   }
-}
 
-/** Builds and returns a new User. */
-function createNewUser(id: number): UserData {
-  const name =
-    NAMES[Math.round(Math.random() * (NAMES.length - 1))] +
-    ' ' +
-    NAMES[Math.round(Math.random() * (NAMES.length - 1))].charAt(0) +
-    '.';
-
-  return {
-    id: id.toString(),
-    name: name,
-    progress: Math.round(Math.random() * 100).toString(),
-    fruit: FRUITS[Math.round(Math.random() * (FRUITS.length - 1))],
-  };
+  allBookings() {
+    this.reservaService.getBookings().subscribe((response) => {
+      console.log(response)
+    })
+  }
 }
