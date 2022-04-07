@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
+import { ErrorStateMatcher } from '@angular/material/core';
 import { Router } from '@angular/router';
-import {FormControl, FormGroup, FormGroupDirective, NgForm, Validators} from '@angular/forms';
-import {ErrorStateMatcher} from '@angular/material/core';
-import { AuthService } from '../auth.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -12,12 +12,13 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   }
 }
 
-@Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
-})
-export class LoginComponent{
+
+  @Component({
+    selector: 'app-login',
+    templateUrl: './login.component.html',
+    styleUrls: ['./login.component.scss'],
+  })
+export class LoginComponent implements OnInit {
 
   emailFormControl = new FormControl('', [Validators.required, Validators.email]);
 
@@ -26,24 +27,24 @@ export class LoginComponent{
   isLoading = false;
 
   matcher = new MyErrorStateMatcher();
+  constructor(private router: Router, private authService : AuthService) {}
 
-  constructor(private router: Router, public authService: AuthService) {}
+  ngOnInit(): void {}
 
   togglePasswordVisibility(): void {
     this.showPassword = !this.showPassword;
   }
 
   goToReservasPage() {
-    this.router.navigateByUrl('newdelta/reservas')
+    this.router.navigateByUrl('/newdelta/reservas');
   }
+
 
   onLogin(form: NgForm) {
     if (form.invalid) {
       return;
     }
-    this.isLoading = true;
-    this.authService.login(form.value.email, form.value.password);
-    //this.goToReservasPage()
-    ;
+    this.authService.postLogin(form.value.email, form.value.password);
   }
+
 }

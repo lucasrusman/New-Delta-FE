@@ -5,7 +5,8 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:3000',
+  apiBooking: 'http://localhost:3000/api/booking',
+  apiUser: 'http://localhost:3000/api/user',
 };
 
 /*

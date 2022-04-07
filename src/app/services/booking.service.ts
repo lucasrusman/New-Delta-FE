@@ -9,11 +9,11 @@ import { Booking } from '../models/booking';
 export class BookingService {
   constructor(private readonly http: HttpClient) {}
   getBookings() {
-    return this.http.get(`${environment.apiUrl}/productos`);
+    return this.http.get(`${environment.apiBooking}`);
   }
 
   postBooking(booking: Booking) {
     console.log(booking);
-    return this.http.post(`${environment.apiUrl}/productos`, booking);
+    return this.http.post(`${environment.apiBooking}/crear`, booking);
   }
 }
