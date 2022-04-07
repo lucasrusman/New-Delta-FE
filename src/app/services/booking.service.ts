@@ -13,7 +13,16 @@ export class BookingService {
   }
 
   postBooking(booking: Booking) {
-    console.log(booking);
     return this.http.post(`${environment.apiBooking}/crear`, booking);
+  }
+
+  cancelar(idReserva: number){
+    console.log(idReserva);
+    return this.http.post(`${environment.apiBooking}/cancelar`, {idReserva});
+  }
+
+  completar(idReserva: number){
+    console.log(idReserva);
+    return this.http.post(`${environment.apiBooking}/completar`, {idReserva});
   }
 }

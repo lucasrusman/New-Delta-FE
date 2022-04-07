@@ -7,6 +7,15 @@ table {
   width: 100%;
 }
 
+
+.completado{
+  background-color: #00800063;
+}
+
+.cancelado{
+  background-color: #ff000075;
+}
+
 td, th {
   width: 10%;
   overflow: auto;

@@ -56,6 +56,7 @@ export class ReservasComponent implements AfterViewInit {
   price: string = '';
   estado: string = '';
   auto: string = '';
+  reservas:ReservaData[] = [];
 
   delete !: boolean
   creado !: boolean
@@ -68,10 +69,10 @@ export class ReservasComponent implements AfterViewInit {
   getBookings() {
     this.reservaService.getBookings().subscribe((response) => {
       console.log(response);
-      const reserva = response as ReservaData[]
-      console.log(reserva)
+      this.reservas = response as ReservaData[]
+      console.log(this.reservas)
       //const users = Array.from({length: 100}, (_, k) => this.createNewUser(k + 1));
-      this.dataSource.data = reserva
+      this.dataSource.data = this.reservas
     });
   }
   ngAfterViewInit() {
@@ -92,5 +93,27 @@ export class ReservasComponent implements AfterViewInit {
     this.reservaService.getBookings().subscribe((response) => {
       console.log(response)
     })
+  }
+
+  asignar(idReserva: number){
+    //TODO: Este metood deberia abrir un modal, para completar con auto (string), cuando se acepta el modal. 
+    // Se debe actualizar la base de datos.
+    console.log(idReserva);
+  }
+
+  cancelar(idReserva: number){
+    this.reservaService.cancelar(idReserva).subscribe((response:any) => {
+      if(response.status == "ok"){
+        this.getBookings();
+      }
+    });
+  }
+
+  completar(idReserva: number){
+    this.reservaService.completar(idReserva).subscribe((response:any) => {
+      if(response.status == "ok"){
+        this.getBookings();
+      }
+    });
   }
 }
