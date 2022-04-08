@@ -1,5 +1,9 @@
 <mat-toolbar>
   <img src="../../../assets/images/newdelta-logo 2.png"/>
   New Delta
+  <button mat-button class="menu-button" (click)="logout()">
+    <mat-icon>exit_to_app</mat-icon>
+    <span>Salir</span>
+  </button>
 </mat-toolbar>
 <router-outlet></router-outlet>

@@ -33,7 +33,7 @@ export class AuthService {
 
   postLogin(email: string, password: string) {
     const authData: AuthData = { email: email, password: password };
-    this.http.post<{ token: string; expiresIn: number }>("http://localhost:3000/api/user/login", authData)
+    this.http.post<{ token: string; expiresIn: number }>(`${environment.apiUser}/login`, authData)
       .subscribe(response => {
         const token = response.token;
         this.token = token;
@@ -44,9 +44,10 @@ export class AuthService {
           this.authStatusListener.next(true);
           const now = new Date();
           const expirationDate = new Date(now.getTime() + expiresInDuration * 1000);
-          console.log(expirationDate);
           this.saveAuthData(token, expirationDate);
           this.router.navigateByUrl('/newdelta/reservas');
+        } else {
+          this.authStatusListener.next(false);
         }
       });
   }
@@ -72,7 +73,7 @@ export class AuthService {
     this.authStatusListener.next(false);
     clearTimeout(this.tokenTimer);
     this.clearAuthData();
-    this.router.navigate(["/"]);
+    this.router.navigate([""]);
   }
 
   private setAuthTimer(duration: number) {
