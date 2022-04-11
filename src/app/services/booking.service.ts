@@ -18,8 +18,8 @@ export class BookingService {
   }
 
 
-  asignarAuto(id:number, infoAuto : Auto){
-    return this.http.post(`${environment.apiBooking}/asignar/${id}`, infoAuto)
+  asignarAuto(id:number, auto : Auto){
+    return this.http.post(`${environment.apiBooking}/asignar/${id}`, auto)
   }
 
   cancelar(idReserva: number){

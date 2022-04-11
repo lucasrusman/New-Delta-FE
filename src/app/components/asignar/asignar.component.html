@@ -2,10 +2,10 @@
   <p>Escriba el modelo del auto al que se le asignara la reserva</p>
   <mat-form-field appearance="fill">
     <mat-label>Auto</mat-label>
-    <input matInput [(ngModel)]="modelo">
+    <input matInput [(ngModel)]="auto">
   </mat-form-field>
 </div>
 <div mat-dialog-actions>
   <button mat-button (click)="onNoClick()">Cerrar</button>
-  <button mat-button cdkFocusInitial>Asignar</button>
+  <button mat-button cdkFocusInitial (click)="onClick()">Asignar</button>
 </div>

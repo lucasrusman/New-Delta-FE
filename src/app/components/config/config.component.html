@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="container-child">
+  <img src="../../../assets/images/newdelta-logo 2.png" alt="" />
+  <mat-form-field>
+    <mat-label class="title">Precio</mat-label>
+    <input matInput name="name" [(ngModel)]="precioKm" minlength="1" />
+  </mat-form-field>
+
+
+  <button mat-raised-button color="warn" (click)="onEdit()">Editar Precio KM</button>
+
+  <ng-template [ngIf]="creado">
+
+    <div class="message_create">Configuracion Actualizada</div>
+
+  </ng-template>
+</div>
+</div>

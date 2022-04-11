@@ -1,5 +1,34 @@
 <mat-toolbar>
+  <button mat-icon-button *ngIf="sidenav.mode === 'over'" (click)="sidenav.toggle()" (click)="onToggleSidenav()">
+    <mat-icon *ngIf="!sidenav.opened">
+      menu
+    </mat-icon>
+    <mat-icon *ngIf="sidenav.opened">
+      close
+    </mat-icon>
+  </button>
   <img src="../../../assets/images/newdelta-logo 2.png"/>
   New Delta
 </mat-toolbar>
-<router-outlet></router-outlet>
+<mat-sidenav-container>
+  <mat-sidenav #sidenav class="mat-elevation-z8" mode="over">
+    <mat-divider></mat-divider>
+
+    <button mat-button class="menu-button" (click)="goToBookingPage()">
+      <mat-icon> directions_car</mat-icon>
+      <span>Reservas</span>
+    </button>
+    <button mat-button class="menu-button" (click)="goToConfigPage()">
+      <mat-icon>settings</mat-icon>
+      <span>Configuraciones</span>
+    </button>
+
+    <mat-divider></mat-divider>
+
+    <button mat-button class="menu-button" (click)="logout()">
+      <mat-icon>exit_to_app</mat-icon>
+      <span>Salir</span>
+    </button>
+  </mat-sidenav>
+  <router-outlet></router-outlet>
+</mat-sidenav-container>

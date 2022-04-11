@@ -11,8 +11,10 @@ import { SharedModule } from './shared/shared.module';
 import { AppComponent } from './app.component';
 import { CoreComponent } from './components/core/core.component';
 import { LoginComponent } from './components/auth/login/login.component';
-import { AsignarDialogo, ReservasComponent } from './components/reservas/reservas.component';
+import { ReservasComponent } from './components/reservas/reservas.component';
 import { AuthService } from './services/auth.service';
+import { AsignarComponent } from './components/asignar/asignar.component';
+import { ConfigComponent } from './components/config/config.component';
 
 
 @NgModule({
@@ -21,7 +23,8 @@ import { AuthService } from './services/auth.service';
     LoginComponent,
     CoreComponent,
     ReservasComponent,
-    AsignarDialogo
+    AsignarComponent,
+    ConfigComponent
   ],
   imports: [
     BrowserModule,

@@ -11,6 +11,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Auto } from 'src/app/models/auto';
 import { DialogData } from 'src/app/models/DialogData';
 import { BookingService } from 'src/app/services/booking.service';
+import { AsignarComponent } from '../asignar/asignar.component';
+import { ConfigService } from '../../services/config.service';
 
 export interface ReservaData {
   id : number;
@@ -100,69 +102,26 @@ export class ReservasComponent implements AfterViewInit {
   }
 
   asignar(idReserva: number){
-    const dialogRef = this.dialog.open(AsignarDialogo, {
+    this.dialog.open(AsignarComponent, {
       width: '250px',
-      data: {modelo: this.modelo, patente: this.patente},
-    });
+      data: {auto : this.auto, id: idReserva},
+    })
 
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        const auto = new Auto({
-          auto: this.modelo
-        })
-        this.reservaService.asignarAuto(idReserva, auto).subscribe((response)=>{
-        })
-      }
-
-    });
   }
 
-  cancelar(idReserva: number){
-    this.reservaService.cancelar(idReserva).subscribe((response:any) => {
+  cancelar(id: number){
+    this.reservaService.cancelar(id).subscribe((response:any) => {
       if(response.status == "ok"){
         this.getBookings();
       }
     });
   }
 
-  completar(idReserva: number){
-    this.reservaService.completar(idReserva).subscribe((response:any) => {
+  completar(id: number){
+    this.reservaService.completar(id).subscribe((response:any) => {
       if(response.status == "ok"){
         this.getBookings();
       }
     });
-  }
-}
-
-@Component({
-  selector: 'eliminar-dialog',
-  templateUrl: 'asignar-auto.component.html',
-  //styleUrls: ['eliminar-dialog.scss'],
-})
-export class AsignarDialogo implements OnInit {
-
-  id: number = 0;
-  modelo:string = '';
-
-  constructor(public dialogRef: MatDialogRef<ReservasComponent>, @Inject(MAT_DIALOG_DATA) public data: DialogData, private reservasService: BookingService, private readonly router: Router, private route: ActivatedRoute, private readonly reservaService: BookingService) { }
-
-  ngOnInit(): void {
-  }
-
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
-
-  onDelete() {
-    const auto = new Auto({
-      auto: this.modelo
-    })
-    this.reservaService.asignarAuto(1, auto).subscribe((response)=>{
-      this.onNoClick()
-    })
-    setTimeout(() => {
-      location.reload()
-    }, 500);
-
   }
 }
