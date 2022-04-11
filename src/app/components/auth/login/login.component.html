@@ -12,6 +12,9 @@
           required>
         <mat-error *ngIf="passwordInput.invalid">Please enter a valid password.</mat-error>
       </mat-form-field>
+      <div *ngIf="error">
+        <div class="message_create">Inicio de sesion incorrecto</div>
+      </div>
       <button mat-raised-button color="primary" type="submit" *ngIf="!isLoading">Login</button>
     </form>
   </div>

@@ -1,10 +1,17 @@
 mat-toolbar {
   background: #004a9f;
   color: white;
+  display: flex;
 }
 
 mat-toolbar img{
+  display: flex;
   height: 50px;
+  justify-items: flex-start;
+}
+
+.menu-button{
+  display: flex;
 }
 
 mat-toolbar {
