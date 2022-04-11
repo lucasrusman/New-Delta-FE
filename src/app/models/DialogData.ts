@@ -1,5 +1,5 @@
 export interface DialogData {
-  modelo: string
-  patente: string
+  id: number
+  auto: string
 }
 

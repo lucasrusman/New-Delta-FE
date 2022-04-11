@@ -17,7 +17,7 @@ export class AsignarComponent implements OnInit {
   auto:string = '';
 
   constructor(
-    public dialogRef: MatDialogRef<ReservasComponent>,
+    public dialogRef: MatDialogRef<AsignarComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
     private reservasService: BookingService,
     private readonly router: Router,
@@ -30,13 +30,13 @@ export class AsignarComponent implements OnInit {
     this.dialogRef.close();
   }
 
-  onClick() {
+  onClick(id:number) {
     const auto = new Auto({
       auto: this.auto
     })
     //TODO
     //falta arreglar que pueda recibir el parametro que viene desde row.id component reservas
-    this.reservasService.asignarAuto(2, auto).subscribe((response)=>{
+    this.reservasService.asignarAuto(id, auto).subscribe((response)=>{
       this.onNoClick()
     })
     setTimeout(() => {
