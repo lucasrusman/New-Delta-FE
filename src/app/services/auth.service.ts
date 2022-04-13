@@ -33,7 +33,7 @@ export class AuthService {
 
   postLogin(email: string, password: string) {
     const authData: AuthData = { email: email, password: password };
-    this.http.post<{ token: string; expiresIn: number }>(`${environment.apiUser}/login`, authData)
+    this.http.post<{ token: string; expiresIn: number }>(`${environment.apiUser}/loginPanel`, authData)
       .subscribe(response => {
         const token = response.token;
         this.token = token;
