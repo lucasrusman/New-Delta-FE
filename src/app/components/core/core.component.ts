@@ -15,7 +15,9 @@ export class CoreComponent implements OnInit {
 
   @ViewChild("sidenav")
   sidenav?: MatSidenav;
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    //const rol = localStorage.getItem("rol");
+  }
 
 
   public onToggleSidenav = () => {
@@ -38,5 +40,10 @@ export class CoreComponent implements OnInit {
   goToConfigPage() {
     this.sidenav?.toggle();
     this.router.navigateByUrl('/newdelta/configuraciones');
+  }
+
+  goToDriversPage() {
+    this.sidenav?.toggle();
+    this.router.navigateByUrl('/newdelta/choferes');
   }
 }

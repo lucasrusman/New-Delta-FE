@@ -13,19 +13,8 @@ import { DialogData } from 'src/app/models/DialogData';
 import { BookingService } from 'src/app/services/booking.service';
 import { AsignarComponent } from '../asignar/asignar.component';
 import { ConfigService } from '../../services/config.service';
+import { ReservaData } from 'src/app/models/ReservaData';
 
-export interface ReservaData {
-  id : number;
-  email :string;
-  fecha :string;
-  desde :string;
-  hasta :string;
-  distancia :string;
-  precio: string;
-  estado: string;
-  auto: string;
-
-}
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
