@@ -8,6 +8,7 @@ import { ChoferesService } from '../../services/choferes.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DialogData } from 'src/app/models/DialogData';
+import { Chofer } from 'src/app/models/chofer';
 
 @Component({
   selector: 'app-choferes',
@@ -24,6 +25,7 @@ export class ChoferesComponent implements OnInit, AfterViewInit {
   @ViewChild(MatSort) sort!: MatSort;
 
   patente: string = '';
+  password: string = '';
 
   choferes:ChoferData[] = [];
   delete !: boolean
@@ -36,9 +38,7 @@ export class ChoferesComponent implements OnInit, AfterViewInit {
   }
   getChoferes() {
     this.choferesService.getChoferes().subscribe((response) => {
-      console.log(response);
       this.choferes = response as ChoferData[]
-      console.log(this.choferes)
       this.dataSource.data = this.choferes
     });
   }
@@ -53,6 +53,19 @@ export class ChoferesComponent implements OnInit, AfterViewInit {
 
   goToEditPage(id: number) {
     this.router.navigateByUrl(`/newdelta/edit/choferes/${id}`);
+  }
+
+  onCreateChofer() {
+    const chofer = new Chofer({
+      patente: this.patente,
+      password: this.password
+    });
+    this.choferesService.postChofer(chofer).subscribe((response) => {
+    });
+    this.creado = true
+    setTimeout(() => {
+      location.reload()
+    }, 750);
   }
 
   applyFilter(event: Event) {
@@ -84,7 +97,11 @@ export class ChoferesComponent implements OnInit, AfterViewInit {
 }
 
 
-
+@Component({
+  selector: 'eliminar-dialog-choferes',
+  templateUrl: 'eliminar-dialog.html',
+  styleUrls: ['eliminar-dialog.scss'],
+})
 export class EliminarDialogoChoferes {
   id: number = 0;
   constructor(

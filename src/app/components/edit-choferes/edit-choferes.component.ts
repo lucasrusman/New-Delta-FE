@@ -21,8 +21,9 @@ export class EditChoferesComponent implements OnInit {
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
     this.choferesService.getChofer(this.id).subscribe((response: any) => {
+      console.log(response);
       this.patente = response[0].patente;
-      this.password = response[0].password;
+      //this.password = response[0].password;
       //otrod
       this.creado = false
     })

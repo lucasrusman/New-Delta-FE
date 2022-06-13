@@ -15,7 +15,7 @@ import { ReservasComponent } from './components/reservas/reservas.component';
 import { AuthService } from './services/auth.service';
 import { AsignarComponent } from './components/asignar/asignar.component';
 import { ConfigComponent } from './components/config/config.component';
-import { ChoferesComponent } from './components/choferes/choferes.component';
+import { ChoferesComponent, EliminarDialogoChoferes } from './components/choferes/choferes.component';
 import { EditChoferesComponent } from './components/edit-choferes/edit-choferes.component';
 
 
@@ -28,7 +28,8 @@ import { EditChoferesComponent } from './components/edit-choferes/edit-choferes.
     AsignarComponent,
     ConfigComponent,
     ChoferesComponent,
-    EditChoferesComponent
+    EditChoferesComponent,
+    EliminarDialogoChoferes
   ],
   imports: [
     BrowserModule,

@@ -1,20 +1,20 @@
 <div class="container">
   <div class="container-child">
-    <img src="../../../assets/images/logo-dygcombos.png" alt="" />
+    <img src="../../../assets/images/newdelta-logo 2.png" alt="" />
     <mat-form-field>
       <mat-label class="title">Patente</mat-label>
-      <input matInput type="string" name="descripcion" [(ngModel)]="patente"/>
+      <input matInput type="text" name="descripcion" [(ngModel)]="patente"/>
     </mat-form-field>
 
     <mat-form-field>
       <mat-label>Constraseña</mat-label>
-      <input matInput type="number" name="precio" [(ngModel)]="password" />
+      <input matInput type="text" name="precio" [(ngModel)]="password" />
     </mat-form-field>
 
     <button mat-button color="withe" (click)="onEdit()">Editar Chofer</button>
     <ng-template [ngIf]="creado">
 
-      <div class="message_create">Pruducto editado con exito</div>
+      <div class="message_create">Chofer editado con exito</div>
 
     </ng-template>
   </div>

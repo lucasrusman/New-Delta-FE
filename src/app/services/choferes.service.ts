@@ -22,6 +22,10 @@ export class ChoferesService {
     return this.http.put(`${environment.apiChofer}/${id}`, chofer)
   }
 
+  postChofer(chofer: Chofer) {
+    return this.http.post(`${environment.apiChofer}/signup`, chofer);
+  }
+
   deleteChofer(id: number) {
     return this.http.delete(`${environment.apiChofer}/${id}`)
   }

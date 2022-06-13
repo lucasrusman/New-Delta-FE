@@ -1,7 +1,7 @@
 export const environment = {
   production: true,
-  apiBooking: 'localhost:3000/api/booking',
-  apiUser: 'localhost:3000/api/user',
-  apiConfig: 'localhost:3000/api/config',
-  apiChofer: 'localhost:3000/api/chofer',
+  apiBooking: 'http://localhost:3000/api/booking',
+  apiUser: 'http://localhost:3000/api/user',
+  apiConfig: 'http://localhost:3000/api/config',
+  apiChofer: 'http://localhost:3000/api/chofer',
 };
