@@ -1,7 +1,7 @@
 export const environment = {
   production: true,
-  apiBooking: 'http://localhost:3000/api/booking',
-  apiUser: 'http://localhost:3000/api/user',
-  apiConfig: 'http://localhost:3000/api/config',
-  apiChofer: 'http://localhost:3000/api/chofer',
+  apiBooking: 'https://newdelta-backend.herokuapp.com/api/booking',
+  apiUser: 'https://newdelta-backend.herokuapp.com/api/user',
+  apiConfig: 'https://newdelta-backend.herokuapp.com/api/config',
+  apiChofer: 'https://newdelta-backend.herokuapp.com/api/chofer',
 };
